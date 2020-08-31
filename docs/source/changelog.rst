@@ -4,6 +4,7 @@ Changelog
 ---------
 **Future Release**
     * Enhancements
+        * Add feature selection functions for null, correlated, and single value features (:pr:`1126`)
     * Fixes
     * Changes
         * Remove the ability to stack transform primitives (:pr:`1119`)
