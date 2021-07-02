@@ -192,3 +192,28 @@ class AgeUnder65(AgeUnderN):
 
     def get_function(self):
         return AgeUnderN.get_function_helper(self, 65)
+
+
+class UpperCaseCount(TransformPrimitive):
+    """Calculates the number of upper case letters in text.
+
+    Description:
+        Given a list of strings, determine the number of characters in each string that are capitalized.
+        Counts every letter individually, not just every word that contains capitalized letters.
+
+    Examples:
+        >>> x = ['This IS a string.', 'This is a string', 'aaa']
+        >>> upper_case_count = UpperCaseCount()
+        >>> upper_case_count(x).tolist()
+        [3.0, 1.0, 0.0]
+    """
+    name = "upper_case_count"
+    input_types = [NaturalLanguage]
+    return_types = Numeric
+    description_template = "upper_case_count"
+
+    def get_function(self):
+        def upper_cnt(values):
+            return values.str.count(pat='[A-Z]')
+
+        return upper_cnt

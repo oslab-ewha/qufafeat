@@ -25,9 +25,9 @@ class Autocorrelation(AggregationPrimitive):
     """Determines the Pearson correlation between a series and a shifted version of the series.
 
     Examples:
-    >>> autocorrelation = Autocorrelation()
-    >>> round(autocorrelation([1, 2, 3, 1, 3, 2]), 3)
-    -0.598
+        >>> autocorrelation = Autocorrelation()
+        >>> round(autocorrelation([1, 2, 3, 1, 3, 2]), 3)
+        -0.598
     """
     name = "autocorrelation"
     input_types = [[Numeric]]
@@ -51,11 +51,11 @@ class Correlation(AggregationPrimitive):
     """Computes the correlation between two columns of values.
 
     Examples:
-    >>> correlation = Correlation()
-    >>> array_1 = [1, 4, 6, 7]
-    >>> array_2 = [1, 5, 9, 7]
-    >>> correlation(array_1, array_2)
-    0.9221388919541468
+        >>> correlation = Correlation()
+        >>> array_1 = [1, 4, 6, 7]
+        >>> array_2 = [1, 5, 9, 7]
+        >>> correlation(array_1, array_2)
+        0.9221388919541468
     """
     name = "correlation"
     input_types = [[Numeric, Numeric]]
@@ -84,9 +84,9 @@ class Variance(AggregationPrimitive):
         Return nan when the series is empty or entirely null.
 
     Examples:
-    >>> variance = Variance()
-    >>> variance([0, 3, 4, 3])
-    2.25
+        >>> variance = Variance()
+        >>> variance([0, 3, 4, 3])
+        2.25
     """
     name = "variance"
     input_types = [Numeric]
