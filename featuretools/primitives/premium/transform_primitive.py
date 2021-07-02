@@ -217,3 +217,34 @@ class UpperCaseCount(TransformPrimitive):
             return values.str.count(pat='[A-Z]')
 
         return upper_cnt
+
+
+class UpperCaseWordCount(TransformPrimitive):
+    """Determines the number of words in a string that are entirely capitalized.
+
+    Description:
+        Given list of strings, determine the number of words in each string that are entirely capitalized.
+
+    Examples:
+        >>> x = ['This IS a string.', 'This is a string', 'AAA']
+        >>> upper_case_word_count = UpperCaseWordCount()
+        >>> upper_case_word_count(x).tolist()
+        [1.0, 0.0, 1.0]
+    """
+    name = "upper_case_word_count"
+    input_types = [NaturalLanguage]
+    return_type = Numeric
+    description_template = "upper_case_word_count"
+
+    def get_function(self):
+        def upper_word_cnt(values):
+            result = np.array([])
+            for words in values.str.split():
+                cnt = 0
+                for word in words:
+                    if word.isupper():
+                        cnt += 1
+                result = np.append(result, cnt)
+            return result
+
+        return upper_word_cnt
