@@ -210,7 +210,7 @@ class UpperCaseCount(TransformPrimitive):
     name = "upper_case_count"
     input_types = [NaturalLanguage]
     return_types = Numeric
-    description_template = "upper_case_count"
+    description_template = "the number of upper case letters in {}"
 
     def get_function(self):
         def upper_cnt(values):
@@ -234,17 +234,17 @@ class UpperCaseWordCount(TransformPrimitive):
     name = "upper_case_word_count"
     input_types = [NaturalLanguage]
     return_type = Numeric
-    description_template = "upper_case_word_count"
+    description_template = "the number of words that are entirely capitalized in {}"
 
     def get_function(self):
         def upper_word_cnt(values):
-            result = np.array([])
+            result = []
             for words in values.str.split():
                 cnt = 0
                 for word in words:
                     if word.isupper():
                         cnt += 1
-                result = np.append(result, cnt)
-            return result
+                result.append(cnt)
+            return np.array(result)
 
         return upper_word_cnt

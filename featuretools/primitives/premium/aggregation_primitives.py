@@ -91,7 +91,7 @@ class Variance(AggregationPrimitive):
     name = "variance"
     input_types = [Numeric]
     return_type = Numeric
-    description_template = "variance"
+    description_template = "the variance of {}"
 
     def get_function(self):
         def var(values):
